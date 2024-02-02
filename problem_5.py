@@ -83,20 +83,12 @@ for word in wordList:
     MyTrie.insert(word)
 
 
-#print(MyTrie.find('ant'))
 
-print(MyTrie.find('an').suffixes())
-
-
-
-# def f(prefix):
-#     if prefix != '':
-#         prefixNode = MyTrie.find(prefix)
-#         if prefixNode:
-#             print('\n'.join(prefixNode.suffixes()))
-#         else:
-#             print(prefix + " not found")
-#     else:
-#         print('')
-
-# print(f(prefix = ''))
+print("PASS" if MyTrie.find('an').suffixes() == ['t', 'thology', 'tagonist', 'tonym'] else 'FAIL')
+print("PASS" if MyTrie.find('ant').suffixes() == ['', 'hology', 'agonist', 'onym'] else 'FAIL')
+print("PASS" if MyTrie.find('antag').suffixes() == ['onist'] else 'FAIL')
+print("PASS" if MyTrie.find('f').suffixes() == ['un', 'unction', 'actory'] else 'FAIL')
+print("PASS" if MyTrie.find('p') is None else 'FAIL')
+print("PASS" if MyTrie.find('').suffixes() == ["ant", "anthology", "antagonist", "antonym", 
+    "fun", "function", "factory", 
+    "trie", "trigger", "trigonometry", "tripod"] else 'FAIL')
