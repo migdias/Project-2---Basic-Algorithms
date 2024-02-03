@@ -88,7 +88,10 @@ print("PASS" if MyTrie.find('an').suffixes() == ['t', 'thology', 'tagonist', 'to
 print("PASS" if MyTrie.find('ant').suffixes() == ['', 'hology', 'agonist', 'onym'] else 'FAIL')
 print("PASS" if MyTrie.find('antag').suffixes() == ['onist'] else 'FAIL')
 print("PASS" if MyTrie.find('f').suffixes() == ['un', 'unction', 'actory'] else 'FAIL')
-print("PASS" if MyTrie.find('p') is None else 'FAIL')
+
+# Edge cases
+print("PASS" if MyTrie.find('p') is None else 'FAIL') # doesnt exist
 print("PASS" if MyTrie.find('').suffixes() == ["ant", "anthology", "antagonist", "antonym", 
     "fun", "function", "factory", 
-    "trie", "trigger", "trigonometry", "tripod"] else 'FAIL')
+    "trie", "trigger", "trigonometry", "tripod"] else 'FAIL') # provided empty prefix
+

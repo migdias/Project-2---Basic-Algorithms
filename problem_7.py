@@ -68,6 +68,9 @@ class Router:
         # return the "not found" handler if you added one
         # bonus points if a path works with and without a trailing slash
         # e.g. /about and /about/ both return the /about handler
+        if len(path) == 0:
+            return self.not_found_handler
+
         handler = self.trie.find(self.split_path(path))
 
         if handler and handler.handler:
@@ -95,6 +98,20 @@ router.add_handler("/home", "goes to homepage")
 router.add_handler('/anotherpage', 'Goes to another page')
 router.add_handler('/anotherpage/about/tmp', 'Goes to temporary')
 
+
+
+## some lookups with the expected output
+        
+print('PASS' if router.lookup('/') == 'root handler' else 'FAIL')
+print('PASS' if router.lookup('/home') == 'goes to homepage' else 'FAIL') 
+print('PASS' if router.lookup('/home/about') == 'about handler' else 'FAIL') 
+print('PASS' if router.lookup('/home/about/me') == 'not found handler' else 'FAIL')
+print('PASS' if router.lookup('/anotherpage/about/tmp') == 'Goes to temporary' else 'FAIL')
+print('PASS' if router.lookup('/anotherpage/about/') == 'not found handler' else 'FAIL')
+
+# Edge Cases
+print('PASS' if router.lookup('/home/about/') == 'about handler' else 'FAIL')  # trailing slash
+
 # not adding the root slash throws an error
 try:
     router.add_handler('home/about/me', 'about me')
@@ -104,12 +121,6 @@ except Exception as e:
     else:
         print('FAIL')
 
-## some lookups with the expected output
-        
-print('PASS' if router.lookup('/') == 'root handler' else 'FAIL')
-print('PASS' if router.lookup('/home') == 'goes to homepage' else 'FAIL') 
-print('PASS' if router.lookup('/home/about') == 'about handler' else 'FAIL') 
-print('PASS' if router.lookup('/home/about/') == 'about handler' else 'FAIL')  # trailing slash
-print('PASS' if router.lookup('/home/about/me') == 'not found handler' else 'FAIL')
-print('PASS' if router.lookup('/anotherpage/about/tmp') == 'Goes to temporary' else 'FAIL')
-print('PASS' if router.lookup('/anotherpage/about/') == 'not found handler' else 'FAIL')
+print('PASS' if router.lookup('about/me') == 'not found handler' else 'FAIL') # not found
+print('PASS' if router.lookup('anotherpage/about/tmp') == 'not found handler' else 'FAIL') # Its a good path but the root slash is not provided
+print('PASS' if router.lookup('') == 'not found handler' else 'FAIL') # provide empty string

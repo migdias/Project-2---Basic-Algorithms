@@ -66,9 +66,9 @@ print ("Pass" if  (4 == sqrt(16)) else "Fail")
 print ("Pass" if  (1 == sqrt(1)) else "Fail")
 print ("Pass" if  (5 == sqrt(27)) else "Fail")
 
-# Test for negative numbers
+# Edge Cases
+print ("Pass" if (910716 == sqrt(829405278394)) else "Fail")
+print ("Pass" if not sqrt('test') else "Fail")
 print ("Pass" if  ('3i' == sqrt(-9)) else "Fail")
 print ("Pass" if  ('5i' == sqrt(-27)) else "Fail")
-
-# Test strings
-print ("Pass" if not sqrt('test') else "Fail")
+print ("Pass" if  (sqrt(None) is None) else "Fail")

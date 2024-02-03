@@ -42,6 +42,9 @@ def rearrange_digits(arr):
     Returns:
        (int),(int): Two maximum sums
     """
+    if len(arr) == 0:
+        return None
+
     # first we use the normal merge sort from class: O(n log n)
     sorted_arr = mergesort(arr)
 
@@ -62,6 +65,8 @@ def rearrange_digits(arr):
 
 def test_function(test_case):
     output = rearrange_digits(test_case[0])
+    if not output:
+        return output
     solution = test_case[1]
     if sum(output) == sum(solution):
         print("Pass")
@@ -73,4 +78,11 @@ test_function([[4, 6, 2, 5, 9, 8], [964, 852]])
 test_function([[9, 9, 9, 9], [99, 99]])
 test_function([[0, 1, 2, 3, 4, 5, 6, 7, 8, 9], [97531, 86420]])
 test_function([[1, 9, 1, 9, 1, 9, 5, 9], [9951, 9911]])
+
+# Edge cases
+test_function([[0, 0, 0, 0, 0, 0, 0, 0], [0, 0]]) # only zeroes
+test_function([[], None]) # empty
+
+#print(rearrange_digits([]))
+#test_function([[9, -5, 5, -8], [0, 0]]) # negative numbers
 

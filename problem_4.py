@@ -41,7 +41,11 @@ def test_function(test_case):
 test_function([0, 0, 2, 2, 2, 1, 1, 1, 2, 0, 2])
 test_function([2, 1, 2, 0, 0, 2, 1, 0, 1, 0, 0, 2, 2, 2, 1, 2, 0, 0, 0, 2, 1, 0, 2, 0, 0, 1])
 test_function([0, 0, 0, 0, 0, 0, 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2])
-
-test_function([0, 0, 0, 0, 0, 0, 0, 0])
 test_function([0, 0, 2, 0, 0, 0, 2])
-test_function([ 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2])
+
+# Edge cases
+test_function([0, 0, 0, 0, 0, 0, 0, 0]) # only zeroes
+test_function([ 1, 1, 1, 1, 1, 1, 2, 2, 2, 2, 2, 2, 2]) # no zeroes
+test_function([1, 1, 1, 1, 1]) # only ones
+test_function([2, 2, 2, 2, 2]) # only twos
+test_function([]) # Nothing

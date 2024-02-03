@@ -58,3 +58,8 @@ test_function([[6, 7, 8, 9, 10, 1, 2, 3, 4], 1])
 test_function([[6, 7, 8, 1, 2, 3, 4], 8])
 test_function([[6, 7, 8, 1, 2, 3, 4], 1])
 test_function([[6, 7, 8, 1, 2, 3, 4], 10])
+
+# Edge cases
+test_function([[1, 2, 3, 4, 5, 6, 7], 3]) # not rotated
+test_function([[], 3]) # Empty list
+test_function([[3], 3]) # list with one item

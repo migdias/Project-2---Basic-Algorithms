@@ -36,20 +36,25 @@ random.shuffle(l)
 
 print ("Pass" if ((0, 9) == get_min_max(l)) else "Fail")
 
-# Only negative
+# Edge cases
+
+## Only negative
 l = [i for i in range(-180, -2)]  # a list containing -180 - -3
 random.shuffle(l)
 print ("Pass" if ((-180, -3) == get_min_max(l)) else "Fail")
 
-# negative and positive
+## negative and positive
 l = [i for i in range(-180, 127)]  # a list containing -180 - 126
 random.shuffle(l)
 print ("Pass" if ((-180, 126) == get_min_max(l)) else "Fail")
 
-# ints with repetitions
+## ints with repetitions
 l = [i for i in range(0, 10)]  # a list containing 0 - 9
 random.shuffle(l)
 l.append(4)
 l.append(8)
 
 print ("Pass" if ((0, 9) == get_min_max(l)) else "Fail")
+
+## empty list
+print ("Pass" if ((None, None) == get_min_max([])) else "Fail")
