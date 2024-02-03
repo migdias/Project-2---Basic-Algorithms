@@ -10,4 +10,4 @@ The idea is that after the array is sorted, to start building the numbers from t
 
 The complexity of this solution is dominated by the merge sort which is O(n log n) + processing of the sorted array O(n/2) + O(n/2), which is still O(n log n)
 
-The space complexity is O(1) because we modify the values in place.
+Since when sorting we create a merged array to store the sorted elements during merging process, the space complexity is O(n) where n is the original length of the array. In the case of the mergesort, its recursively splitting the input array at each level, and therefore will be a max slices of O(log n). Furthermore, for each recursion we need to hold left and right slices which will be complexity of O(n). Putting it all together we have O(n) + O(n log n) -> O(n).
