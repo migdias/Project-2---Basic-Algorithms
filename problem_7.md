@@ -1,15 +1,31 @@
 # Problem 7: Request Routing in a Web Server with a Trie
 
-In this problem, the complexity is all about adding paths to the Trie, and looking them up. Splitting the path also requires checking the whole path. 
+## Time complexity
 
-- Insertion is O(n) with n as the number of elements since we have to go through each part of the path. 
-- Lookup is also O(n) since we need to grab the element to check if there is a handler. We have to go in worst case to the nth element.
-- Splitting the path is again O(n) where n is the number of parts in the path.
+##### Insert method
+The insert method will mean that we will have to travel down the tree at most r times where r is the amount of routes of the path. So the complexity is **O(r)**
 
-In terms of space complexity, the space required in total is the space to:
+##### Find method
+The find method has to go through the trie at most r times (worst case). The complexity will be at most **O(r)** where r is the amount of routes of the path given.
 
-- Store TrieNodes which is O(k) where k is the number of nodes
-- Store the path for split operation (which is temporary).
+##### add_handler method
+The add_handler just runs a **O(1)** operation to check if the path is valid, and then runs the insert method which is **O(r)**
 
-In summary, the Time Complexity is O(n) and the Space Complexity is O(k).
+##### lookup method
+It calls the find method which is **O(r)**, and then if it exists, return. There is two other comparisons that simplify to **O(1)**. The overall time complexity of this method is then **O(r)**.
+
+##### split_path method
+The time complexity of this one is **O(r)** since it has to go through the whole string in search for the '/' and split it. There are two other pop operations and a comparison which are **O(1)**. This simplifies to **O(r)** 
+
+- The overall time complexity is then `4O(r) -> O(r)`, where r is the amount of routes in the path. Note: The complexity is mainly dominated by the inser and  find operation. 
+
+## Space Complexity
+
+##### Trie Nodes
+Storing the nodes of the trie is proportional to the total length of all routes in the trie, which is **O(k)** where k is the total amount of routes stored.
+
+##### Route Strings
+Storing the route strings is proportional to the total length of all routes in the trie, which is mainly **O(m)** where m the the total characters stored.
+
+- The overall space complexity is then **O(m + k)**
 
